@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 import Image from 'next/image'
+import { useTheme } from "next-themes"
 
 const siteMap = [
     { href: '/', name: 'Home' },
@@ -16,6 +17,7 @@ const classNames = (...classes: string[]) => {
 
 export default function Navbar() {
     const router = useRouter()
+    const { theme, setTheme } = useTheme()
 
     return (
         <>
@@ -27,7 +29,7 @@ export default function Navbar() {
                                 <div className="flex space-x-4">
                                     {siteMap.map((item, index) => {
                                         return (
-                                            <a
+                                            <Link
                                                 key={index}
                                                 href={item.href}
                                                 className={classNames(
@@ -36,7 +38,7 @@ export default function Navbar() {
                                                 )}
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         )
                                     })}
                                 </div>
@@ -44,12 +46,14 @@ export default function Navbar() {
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <div className="relative ml-3">
-                                <div>
+                                <div onClick={e => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                                     <Image
                                         className="h-8 w-8 rounded-full"
                                         src="/Waddle.png"
                                         width="256" height="256"
-                                        alt='Waddle Dee' />
+                                        priority={true}
+                                        alt='Waddle Dee'
+                                    />
                                 </div>
                             </div>
                         </div>
