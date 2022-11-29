@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 import Image from 'next/image'
-import { useTheme } from "next-themes"
+import React, {useEffect, useState} from "react";
 
 const siteMap = [
     { href: '/', name: 'Home' },
@@ -17,7 +17,19 @@ const classNames = (...classes: string[]) => {
 
 export default function Navbar() {
     const router = useRouter()
-    const { theme, setTheme } = useTheme()
+
+    const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+    const HandleTheme = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        const newTheme = theme === 'dark' ? 'light' : 'dark'
+        setTheme(newTheme)
+        localStorage.setItem('theme', newTheme)
+    }
+
+    useEffect(() => {
+        document.body.dataset.theme = theme
+        window.localStorage.setItem('theme', theme)
+    }, [theme])
 
     return (
         <>
@@ -46,7 +58,7 @@ export default function Navbar() {
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <div className="relative ml-3">
-                                <div onClick={e => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                                <div className="cursor-pointer" onClick={e => HandleTheme(e)}>
                                     <Image
                                         className="h-8 w-8 rounded-full"
                                         src="/Waddle.png"
