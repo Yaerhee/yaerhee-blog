@@ -33,8 +33,8 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="bg-orange-800">
-                <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <nav className="bg-gray-800">
+                <div className="w-1/2 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="hidden sm:ml-6 sm:block">
@@ -45,7 +45,7 @@ export default function Navbar() {
                                                 key={index}
                                                 href={item.href}
                                                 className={classNames(
-                                                    item.href === router.pathname ? 'bg-orange-900 text-white' : 'text-orange-300 hover:bg-orange-700 hover:text-white',
+                                                    item.href === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                     'px-3 py-2 rounded-md text-sm font-medium transition ease-in-out delay-80'
                                                 )}
                                             >
