@@ -48,7 +48,7 @@ export default function Navbar() {
                                                     item.href === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-700 hover:text-white',
                                                     'px-3 py-2 rounded-md text-sm font-medium transition ease-in-out delay-80'
                                                 )}
-                                            target="_blank">
+                                            target={item.name === 'Github' ? '_blank' : ''}>
                                                 {item.name}
                                             </Link>
                                         )
