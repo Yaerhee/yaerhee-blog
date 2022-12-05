@@ -31,6 +31,19 @@ export default function Navbar() {
         window.localStorage.setItem('theme', theme)
     }, [theme])
 
+    const setIconPerEachTheme = () => {
+        const characterName = theme === 'dark' ? 'Waddle' : 'Kirby'
+        return (
+            <Image
+                className="h-8 w-8 rounded-full"
+                src={`/${characterName}.png`}
+                width="256" height="256"
+                priority={true}
+                alt={`${characterName}`}
+            />
+        )
+    }
+
     return (
         <>
             <nav>
@@ -59,13 +72,7 @@ export default function Navbar() {
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <div className="relative ml-3">
                                 <div className="cursor-pointer" onClick={e => HandleTheme(e)}>
-                                    <Image
-                                        className="h-8 w-8 rounded-full"
-                                        src="/Waddle.png"
-                                        width="256" height="256"
-                                        priority={true}
-                                        alt='Waddle Dee'
-                                    />
+                                    {setIconPerEachTheme()}
                                 </div>
                             </div>
                         </div>
