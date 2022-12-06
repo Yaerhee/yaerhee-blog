@@ -20,7 +20,8 @@
     "incremental": true,
     "paths": {
       "contentlayer/generated": ["./.contentlayer/generated"],
-    }
+    },
+    "baseUrl": ".",
   },
   "include": [
     "next-env.d.ts",
