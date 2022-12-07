@@ -10,9 +10,6 @@ export default class MainDocument extends Document {
     render() {
         const setPageTheme = `
             function getTheme() {
-                if (window.localStorage.getItem('theme')) {
-                    return window.localStorage.getItem('theme')
-                }
                 const theme = window.localStorage.getItem('theme')
                 return theme ? theme : 'dark'
                 }
