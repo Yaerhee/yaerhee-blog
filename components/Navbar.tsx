@@ -4,10 +4,10 @@ import Image from 'next/image'
 import React, {useEffect, useState} from "react";
 
 const siteMap = [
-    { href: '/', name: 'Home' },
-    { href: '/about', name: 'About' },
-    { href: '/posts', name: 'Posts' },
-    { href: 'https://github.com/yaerhee', name: 'Github' },
+    { href: '/', name: 'HOME' },
+    { href: '/about', name: 'ABOUT' },
+    { href: '/posts', name: 'POSTS' },
+    { href: 'https://github.com/yaerhee', name: 'GITHUB' },
 ]
 
 const classNames = (...classes: string[]) => {
@@ -46,8 +46,8 @@ export default function Navbar() {
 
     return (
         <>
-            <nav>
-                <div className="w-1/2 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <nav className="sticky top-0 w-full bg-black">
+                <div className="w-1/2 mx-auto sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="hidden sm:ml-6 sm:block">
