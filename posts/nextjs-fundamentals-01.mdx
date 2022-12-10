@@ -1,0 +1,48 @@
+---
+title: Test post2
+date: 2022-12-05
+---
+
+-   노마드 코더의 Next.js 강의를 듣는 동안, Next.js (vs. React) 의 특징을 아래와 같이 정리해본다.
+
+|   | **create-react-app (React)** | **create-next-app (Next.js)** |
+| --- | --- | --- |
+| 프로젝트 init (폴더 생성) 커맨드 | npm | npx |
+| Library ? Framework? | Library (기본 틀 제공, 설정은 개인의 자유) | Framework (기본 세팅이 쉬우나 폴더 및   파일 경로는 고정되어 있어서 유의해야 함) |
+| CSR ? SSR? | **Client Side Rendering**   (브라우저가 유저가 보는 UI를 다 만들어줌)   \-> client-side JS가 모든 UI를 만듦   (HTML 에서는 빈 div 가 자리잡고,   UI가 이후에 출력) cf) JS 로딩이 다 안되면 화면이 보이지 않음 | **SSR / Static Generation**   (실제 HTML 이 소스코드 상에 존재함,   API result 가 들어오면 내용은 그때 보임)      cf) Static Generation: 빌드 타임에 HTML이 생성 & 매 요청에 따라 재사용됨   cf2) SSR: 매 요청에 따라 HTML이 생성됨 |
+
+#### Hydration (+ pre-rendering)
+
+-   위의 Static Generation 과 일맥상통하는 내용으로,
+HTML 이 빌드 시에 (미리) 만들어져 있고, 요청에 따라 재사용 된다는 속성을 말한다.
+-   아래의 코드를 작성해 놓고, HTML 소스를 한 번 살펴보자.
+
+```
+import { useState } from 'react'
+
+export default function Index() {
+    const [counter, setCounter] = useState(0)
+    return (
+        <div>
+            <h1>Number is {counter}</h1>
+            <button onClick={() => setCounter(prev => prev +1 )}>+</button>
+            <button onClick={() => setCounter(prev => prev -1 )}>-</button>
+        </div>
+    )
+}
+```
+
+-   위와 같이, 소스코드를 보았을 때 기본 값을 준비하여 HTML 태그를 갖춰두는 과정을 이야기 한다.
+-   보통 페이지가 로드될 때 수 많은 스크립트들을 요청할 때,
+위의 pre-rendering 이후 해당 스크립트들을 활용하는 방식을 택할 수 있다.
+
+\=> Front-end 내부에서 React.js 를 실행하는 방식을 Hydration 이라고 부른다.
+
+-   유저가 웹사이트를 방문할 경우
+
+1.  초기 상태의 component로 구성된, 미리 생성된 HTML 페이지를 보게 되고
+2.  상호작용이 일어날 경우, react.js 가 이후의 구성을 넘겨받아서 동작을 돕게 된다.
+
+CSR과는 다르게, 기본적인 HTML은 갖춘 상태에서 react를 실행시키도록 여유를 둘 수 있기 때문에
+
+SEO 등(구글 검색엔진, ...)에서 유용하게 활용할 수 있는 방식이다.
