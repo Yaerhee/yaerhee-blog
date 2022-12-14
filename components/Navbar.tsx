@@ -3,11 +3,13 @@ import {useRouter} from "next/router";
 import Image from 'next/image'
 import React, {useEffect, useState} from "react";
 
+const GITHUB = 'GITHUB'
+
 const siteMap = [
     { href: '/', name: 'HOME' },
     { href: '/about', name: 'ABOUT' },
     { href: '/posts', name: 'POSTS' },
-    { href: 'https://github.com/yaerhee', name: 'GITHUB' },
+    { href: 'https://github.com/yaerhee', name: GITHUB },
 ]
 
 const classNames = (...classes: string[]) => {
@@ -61,7 +63,7 @@ export default function Navbar() {
                                                     item.href === router.pathname ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-700 hover:text-white',
                                                     'px-3 py-2 rounded-md text-sm font-medium transition ease-in-out delay-80'
                                                 )}
-                                            target={item.name === 'Github' ? '_blank' : ''}>
+                                            target={item.name === GITHUB ? '_blank' : ''}>
                                                 {item.name}
                                             </Link>
                                         )
