@@ -3,12 +3,12 @@ import {useRouter} from "next/router";
 import Image from 'next/image'
 import React, {useEffect, useState} from "react";
 
-const GITHUB = 'GITHUB'
+const GITHUB = 'Github'
 
 const siteMap = [
-    { href: '/', name: 'HOME' },
-    { href: '/about', name: 'ABOUT' },
-    { href: '/posts', name: 'POSTS' },
+    { href: '/', name: 'Home' },
+    { href: '/about', name: 'About' },
+    { href: '/posts', name: 'Posts' },
     { href: 'https://github.com/yaerhee', name: GITHUB },
 ]
 
@@ -74,7 +74,7 @@ export default function Navbar() {
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <div className="relative ml-3">
-                                <div className="cursor-pointer" onClick={e => HandleTheme(e)}>
+                                <div className="cursor-pointer icon-effect" onClick={e => HandleTheme(e)}>
                                     {setIconPerEachTheme()}
                                 </div>
                             </div>
