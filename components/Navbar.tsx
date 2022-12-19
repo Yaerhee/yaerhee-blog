@@ -26,6 +26,7 @@ export default function Navbar() {
         const newTheme = theme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
         localStorage.setItem('theme', newTheme)
+        document.documentElement.classList.toggle('dark')
     }
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="sticky top-0 w-full bg-black">
+            <nav className="sticky top-0 w-full">
                 <div className="w-1/2 mx-auto sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">

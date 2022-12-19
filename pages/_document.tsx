@@ -14,6 +14,11 @@ export default class MainDocument extends Document {
                 return theme ? theme : 'dark'
                 }
             document.body.dataset.theme = getTheme()
+            if (window.localStorage.theme === 'dark' || !window.localStorage['theme']) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
         `
         return (
             <Html>
