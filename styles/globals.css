@@ -69,3 +69,9 @@ body[data-theme="light"] {
     box-shadow: 0 0 5px var(--yellow);
     text-shadow: 0 0 5px var(--yellow);
 }
+
+#main_background {
+    background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 75%, #000000 100%),
+            url(../public/tree-bg.jpg) center/cover no-repeat;
+}
