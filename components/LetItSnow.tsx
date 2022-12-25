@@ -1,6 +1,12 @@
 import Snowfall from "react-snowfall";
+import React from 'react';
 
 export default function LetItSnow() {
+    if (typeof document === 'undefined') {
+        // server-side : document 'undefined' -> useLayoutEffect (X) / useEffect (O)
+        React.useLayoutEffect = React.useEffect
+    }
+
     return (
         <Snowfall
             color="#98b0d7"
