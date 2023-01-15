@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 export default function App({ Component, pageProps }: AppProps) {
   return (
       // Layout - Navbar with children
-      <div id="main_background">
+      <div>
           <Layout>
               {/* container layout */}
               <div className="w-2/5 mt-8 mx-auto min-h-[100vh]">
