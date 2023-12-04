@@ -2,6 +2,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import Image from 'next/image'
 import React, {useEffect, useState} from "react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 const GITHUB = 'Github'
 
@@ -49,40 +50,41 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="sticky top-0 w-full dark:bg-black bg-white duration-300">
-                <div className="w-1/2 mx-auto sm:px-6 lg:px-8">
-                    <div className="relative flex h-16 items-center justify-between">
-                        <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                            <div className="hidden sm:ml-6 sm:block">
-                                <div className="flex space-x-8">
-                                    {siteMap.map((item, index) => {
-                                        return (
-                                            <Link
-                                                key={index}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.href === router.pathname ? 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-600'
-                                                        : 'hover:text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600',
-                                                    'px-3 py-2 rounded-md text-md font-medium transition ease-in-out delay-80'
-                                                )}
-                                            target={item.name === GITHUB ? '_blank' : ''}>
-                                                {item.name}
-                                            </Link>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <div className="relative ml-3">
-                                <div className="cursor-pointer icon-effect" onClick={e => HandleTheme(e)}>
-                                    {setIconPerEachTheme()}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            {/* todo: dark mode compatible */}
+            <Flex w="full" position="sticky" top={0} zIndex={1000} bgColor="white" shadow="base">
+                <Flex w="50%" px={8} mx="auto">
+                    <Flex h={16} alignItems="center">
+                        <Flex flex={1} alignItems="center" justifyContent="space-between">
+                            <Flex gap={16}>
+                              {siteMap.map((item, index) => {
+                                return (
+                                  <Link
+                                    key={index}
+                                    href={item.href}
+                                    className={classNames(
+                                      item.href === router.pathname ? 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-600'
+                                        : 'hover:text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600',
+                                      'px-3 py-2 rounded-md text-md font-medium transition ease-in-out delay-80'
+                                    )}
+                                    target={item.name === GITHUB ? '_blank' : ''}>
+                                    <Text color="black">
+                                      {item.name}
+                                    </Text>
+                                  </Link>
+                                )
+                              })}
+                            </Flex>
+                        </Flex>
+                        <Flex pos="absolute" insetY={0} right={0} alignItems="center" pr={2}>
+                          <Box ml={3}>
+                            <Box className="icon-effect" onClick={e => HandleTheme(e)}>
+                              {setIconPerEachTheme()}
+                            </Box>
+                          </Box>
+                        </Flex>
+                    </Flex>
+                </Flex>
+            </Flex>
         </>
     )
 }
