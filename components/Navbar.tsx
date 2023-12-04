@@ -8,7 +8,7 @@ const GITHUB = 'Github'
 const siteMap = [
     { href: '/', name: 'Home' },
     { href: '/about', name: 'About' },
-    { href: '/posts', name: 'Posts' },
+    // { href: '/posts', name: 'Posts' },
     { href: 'https://github.com/yaerhee', name: GITHUB },
 ]
 
